@@ -172,6 +172,7 @@ export * from "./status";
 export * from "./payroll";
 export * from "./payroll/runStatus";
 export * from "./payroll/periodPagination";
+export * from "./payroll/retryEligibility";
 // ── Configurable Pagination Guardrails (#500) ───────────────────────────
 export * from "./pagination-guardrails";
 // ── Payload Normalization ───────────────────────────────────────────────────

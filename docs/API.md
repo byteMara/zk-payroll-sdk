@@ -313,6 +313,9 @@ Generates a ZK proof and submits a payment transaction to the smart contract.
 - **amount**: Salary amount to pay.
 - **Returns**: Transaction hash.
 
+#### `evaluateFailedPayoutRetryEligibility(input): FailedPayoutRetryEligibility`
+Checks whether an individual failed payout is safe to retry. The input includes its normalized transaction status, failure classification, attempt count, maximum attempts, and idempotency key. Retry is allowed only for a retryable failure while attempts remain and an idempotency key is present. The result provides a stable code and generic guidance; it never returns the key or reflects raw failure details.
+
 ### `PayrollContract`
 
 Low-level wrapper for direct smart contract interactions.
