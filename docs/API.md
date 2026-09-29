@@ -1,5 +1,22 @@
 # SDK API Reference
 
+## Treasury replenishment readiness
+
+Use `analyzeTreasuryReplenishmentReadiness` to compare per-asset payroll obligations with caller-supplied treasury balances. It returns whether payroll can execute now, each asset's buffered target balance, the exact top-up amount in stroops, and blockers or replenishment recommendations. Missing balances, locked treasuries, unsupported assets, and suspended assets are reported as blockers instead of producing a speculative top-up.
+
+```typescript
+import { analyzeTreasuryReplenishmentReadiness } from "@zk-payroll/core";
+
+const analysis = analyzeTreasuryReplenishmentReadiness({
+  obligations: [{ asset: "native", requiredAmount: 100_000n }],
+  treasuryBalances: [{ asset: "native", availableBalance: 75_000n }],
+  defaultBufferPercent: 10,
+});
+
+analysis.assets[0].replenishmentAmount; // 35_000n
+analysis.canExecuteNow; // false
+```
+
 ## Classes
 
 ## Idempotent payroll retries
